@@ -1,0 +1,56 @@
+//sketch by Maxwell Brady-Hoover
+//LCD filament transparancy tester
+
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+//set pins for laser and photoresistor
+const int prPin = A1; //sets digital pin 9 as the photoresistor pin
+const int laserPin = 8;  // sets digital pin 8 as the laser pin
+const int buttonPin = 10; //sets digital pin 10 to recieve button presses
+
+int buttonState = 0;
+int photoresistance = 0;
+int percent = 0;
+int fullpower = 1000;
+
+void setup() {
+  // put your setup code here, to run once:
+
+  //pinMode(prPin, INPUT);  //sets pin 9 as an input pin for photoresistor readings
+  pinMode(laserPin, OUTPUT);  //sets pin 8 as an output pin for running the laser
+
+  //set up the LCD with the number of columns and rows:
+  lcd.begin(20,4);
+}
+
+void loop() {  // put your main code here, to run repeatedly:
+  //lcd.print("bradyhoover_Designs");
+  //lcd.setCursor(0,1);
+  //lcd.print("Transparency Tester Box");
+  
+  //if(buttonState = digitalRead(buttonPin))
+  //{
+
+  //photoresistance = analogRead(prPin);
+  
+  //percent = map(photoresistance,0,fullpower,0,100);
+
+  lcd.print("BradyHoover_Designs");
+  lcd.setCursor(0,1);
+  lcd.print("Transparency Test");
+  lcd.setCursor(0,2);
+  lcd.print("penetration");
+  lcd.setCursor(0,3);
+  lcd.print(map(photoresistance,0,fullpower,0,100));
+  //lcd.println(percent = map(analogRead(prPin),0,fullpower,0,100));  ///this line of code when on crashes it. because of calculation. even the calculations above
+  lcd.setCursor(0,0);
+  delay(20);
+  
+  //lcd.print(percent = map(analogRead(prPin),0,fullpower,0,100));
+  //delay(200);
+  //}
+}
